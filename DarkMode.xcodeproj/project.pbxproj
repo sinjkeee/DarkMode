@@ -12,6 +12,7 @@
 		2AABF22128DA242F00881E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AABF22028DA242F00881E2D /* ViewController.swift */; };
 		2AABF22628DA243200881E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AABF22528DA243200881E2D /* Assets.xcassets */; };
 		2AABF22928DA243200881E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AABF22728DA243200881E2D /* LaunchScreen.storyboard */; };
+		2AABF23128DA31B200881E2D /* MTUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AABF23028DA31B200881E2D /* MTUserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2AABF22528DA243200881E2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AABF22828DA243200881E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AABF22A28DA243200881E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AABF23028DA31B200881E2D /* MTUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTUserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				2AABF21C28DA242F00881E2D /* AppDelegate.swift */,
 				2AABF21E28DA242F00881E2D /* SceneDelegate.swift */,
 				2AABF22028DA242F00881E2D /* ViewController.swift */,
+				2AABF23028DA31B200881E2D /* MTUserDefaults.swift */,
 				2AABF22528DA243200881E2D /* Assets.xcassets */,
 				2AABF22728DA243200881E2D /* LaunchScreen.storyboard */,
 				2AABF22A28DA243200881E2D /* Info.plist */,
@@ -137,6 +140,7 @@
 				2AABF22128DA242F00881E2D /* ViewController.swift in Sources */,
 				2AABF21D28DA242F00881E2D /* AppDelegate.swift in Sources */,
 				2AABF21F28DA242F00881E2D /* SceneDelegate.swift in Sources */,
+				2AABF23128DA31B200881E2D /* MTUserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

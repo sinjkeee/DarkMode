@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
+        window?.overrideUserInterfaceStyle = MTUserDefaults.share.theme.getUserInterfaceStyle()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

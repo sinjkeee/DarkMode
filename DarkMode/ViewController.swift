@@ -7,6 +7,23 @@
 
 import UIKit
 
+enum Theme: Int {
+    case device
+    case light
+    case dark
+    
+    func getUserInterfaceStyle() -> UIUserInterfaceStyle {
+        switch self {
+        case .device:
+            return .unspecified
+        case .light:
+            return .light
+        case .dark:
+            return .dark
+        }
+    }
+}
+
 class ViewController: UIViewController {
 
     private let nameLabel: UILabel = {
@@ -22,7 +39,7 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Press Me", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.7616526484, green: 0.344427973, blue: 0.4626610279, alpha: 1)
-        button.tintColor = .white
+        button.tintColor = UIColor(named: "otherColor")
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -32,14 +49,21 @@ class ViewController: UIViewController {
     private let likeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.7616526484, green: 0.344427973, blue: 0.4626610279, alpha: 1)
+        imageView.tintColor = #colorLiteral(red: 0.7616526484, green: 0.344427973, blue: 0.4626610279, alpha: 1)
+        imageView.image = UIImage(named: "like")?.withRenderingMode(.alwaysTemplate)
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let segmentedControl: UISegmentedControl = {
-        let sc = UISegmentedControl()
-        sc.backgroundColor = .red
+    private lazy var segmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["Device", "Light", "Dark"])
+        sc.backgroundColor = .white
+        sc.selectedSegmentTintColor = #colorLiteral(red: 0.7616526484, green: 0.344427973, blue: 0.4626610279, alpha: 1)
+        sc.selectedSegmentIndex = 0
+        sc.tintColor = UIColor(named: "otherColor")
+        sc.addTarget(self, action: #selector(segmentedControlTapped), for: .valueChanged)
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()
@@ -52,15 +76,25 @@ class ViewController: UIViewController {
     }
     
     @objc private func likeButtonTapped() {
-        likeImageView.image = UIImage(named: "like")
+        UIView.animate(withDuration: 1) { [weak self] in
+            guard let self = self else { return }
+            self.likeImageView.tintColor = UIColor(named: "otherColor")
+        }
+    }
+    
+    @objc private func segmentedControlTapped() {
+        MTUserDefaults.share.theme = Theme(rawValue: segmentedControl.selectedSegmentIndex) ?? .device
+        view.window?.overrideUserInterfaceStyle = MTUserDefaults.share.theme.getUserInterfaceStyle()
     }
     
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundColor")
+        
         view.addSubview(nameLabel)
         view.addSubview(likeImageView)
         view.addSubview(likeButton)
         view.addSubview(segmentedControl)
+        segmentedControl.selectedSegmentIndex = MTUserDefaults.share.theme.rawValue
     }
     
     private func setConstraints() {
